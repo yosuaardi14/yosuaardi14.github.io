@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="js/Audio2.js"></script>
+    <title>Battle</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <style>
+        table{
+            width: 100%;
+            height: 100%;
+        }
+        body{
+			background: url(img/back/textBG.jpg);
+		}
+        #canvas{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            margin-left: 18.5%;
+        }
+        textarea{
+            width: 10%;
+            height: 10%;
+        }
+        #log{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            height: 300px;
+            margin-left: 3%;
+        }
+        #logA{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            height: 300px;
+            margin-left: 85%;
+        }
+        p{
+            visibility: hidden;
+        }
+        .bttn{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10%;
+            padding-top: 25%;
+        }
+    </style>
+</head>
+<body>
+    <textarea name="logA" id="logA" cols="25" rows="20"></textarea>
+    <canvas id="canvas" width="800" height="300"></canvas>
+    <textarea name="log" id="log" cols="25" rows="20"></textarea>
+    <div class="bttn">
+        <button id ="healBtn">Healing</button>
+        <button id ="atkBtn">Attack</button>
+        <button id ="defBtn">Defense</button>
+        <button id ="speBtn">Special</button>
+    </div>
+    <table border="1px" id="table">
+        <tr>
+            <td>
+                <button id ="1" onclick="tombol1()">1</button>
+                <h2>"Prolog"</h2>
+            </td>
+            <td>
+                <p></p>
+            </td>
+            <td>
+                <button id ="2" onclick="tombol2()">2</button>
+                <h2>Siapa Disana?</h2>
+            </td>
+            <td>
+                <p></p>
+            </td>
+            <td>
+                <button id ="3" onclick="tombol3()">3</button>
+                <h2>Sebuah Perangkap</h2>
+            </td>
+            <td>
+                <p></p>
+            </td>
+            <td>
+                <button id ="4" onclick="tombol4()">4</button>
+                <h2>Bala Bantuan?</h2>
+            </td>
+            <td>
+                <p></p>
+            </td>
+      
+            <td>
+                <button id ="5" onclick="tombol5()">5</button>
+                <h2>Jatuh Cinta</h2>
+            </td>
+            <td>
+                <p></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button id ="6" onclick="tombol6()">6</button>
+                <h2>Benda Misterius</h2>
+            </td>
+            <td>
+                <p></p>
+            </td>
+            <td>
+                <button id ="7" onclick="tombol7()">7</button>
+                <h2>...</h2>
+            </td>
+            <td>
+                <p></p>
+            </td>
+            <td>
+                <button id ="8" onclick="tombol8()">8</button>
+                <h2>Dendam</h2>
+            </td>
+            <td>
+                <p></p>
+            </td>
+            <td>
+                <button id ="9" onclick="tombol9()">9</button>
+                <h2>Cermin</h2>
+            </td>
+            <td>
+                <p></p>
+            </td>
+            <td>
+                <button id ="10" onclick="tombol10()">10</button>
+                <h2>Ilusi?</h2>
+            </td>
+            <td>
+                <p></p>
+            </td>
+        </tr>
+    </table>
+    
+    <script type="text/javascript" src="js/PlayerData.js"></script>
+    <script type="text/javascript" src="js/Character.js"></script>
+    <script type="text/javascript" src="js/Level.js"></script>
+    <script type="text/javascript" src="js/healthBar.js"></script>
+    <script type="text/javascript" src="js/AISystem.js"></script>
+    <script type="text/javascript" src="js/Game.js"></script>
+    <script type="text/javascript" src="js/Map.js"></script>
+    <script type="text/javascript" src="js/Battle.js"></script>
+    <script>
+        loadMap();
+    </script>
+    <script>
+        function tombol1() {
+            window.alert("Di suatu bagian utara Negara lahirlah seorang anak bernama Covid. Ia memiliki kemampuan menggunakan pedang dan tameng secara lihai. Covid bermimpi ingin berkelana kepenjuru tempat dan menjadi nomor 1. Suatu kala ia membawa pedang dan tamengnya berjalan dan bertemu penjahat perkakas.");
+        }
+        function tombol2() {
+            window.alert("Setelah perlawnan sengit Covidpun berhasil memenangkannya. <br> 5 Tahun berlalu, Covid bertumbuh menjadi pemuda yang gagah namun lemah akan cinta. ketika ia memulai perjalanannya ia menemukan sebuah benda yang membawa alam sadarnya untuk melawan dirinya.");
+        }
+        function tombol3() {
+            window.alert("Dengan semangat membara Covid akhirnya berhasil mengalahkan diri dan masa lalunya menjadi pemuda baru namun kelemahannya akan cinta semakin besar. ditengah perjalanan Covid tidak sengaja menendang sebuah batu yang ternyata batu tersebut adalah perangkap. ia harus mengalahkan perangkap tersebut.");
+        }
+        function tombol4() {
+            window.alert("Tak disangka ternyata setelah mengalahkan perangkap tersebut 1 orang datang dan tiba-tiba melawan covid.");
+        }
+        function tombol5() {
+            window.alert("Akhirnya Covid berhasil melewati semua itu. Ditengah perjalanan ia menemukan sesosok wanita yang membuat dirinya jatuh cinta. ketika ia ingin mendekati wanita tersebut ia malah berhadapan dengan penjaga wanita tersebut. karena tidak bisa berdamai merekapun bertarung 1 sama lain.");
+        }
+        function tombol6() {
+            window.alert("Karena penjaga tersebut kewalahan menghadapi Covid yang gagah namun lemah akan cinta, ia mengeluarkan cermin yang membawa alam sadar Covid melawan dirinya lagi.");
+        }
+        function tombol7() {
+            window.alert("Jeda sebentar, yang nulis capek. Silakan melawan lagi.");
+        }
+        function tombol8() {
+            window.alert("Menang akan dirinya, Covidpun terbangun dan tidak sadar bahwa ia sudah berada di penjara. Di sana ia menjadi orang yang di bully, di singkirkan, di injak oleh orang lain. Suatu ketika amarah dan dendam yang ia pendam tidak dapat di kontrol dan keinginan tersebut menguasai Covid untuk melawan orang-orang di sana.");
+        }
+        function tombol9() {
+            window.alert("Di dalam dirinya, Covid merasa tidak berguna (nub sih), tiba-tiba ia mendengar suara wanita memanggil namanya. Ketika ia melihat kedepan terdapat sesosok wanita yang tersenyum lebar dengan aura kegelapan menghampiri dirinya dengan pisau lalu mulai menusuk diri Covid seakan wanita tersebut sangat menikmati hal tersebut. Covid lantas sangat pasrah, namun tiba-tiba kegelapan tersebut melahap dirinya. Di dalam kegelapan Covid melihat sebuah cermin dimana ia dibawa melawan dirinya (lagi, ini penulis seneng banget sih ngelawan dirinya).");
+        }
+        function tombol10() {
+            window.alert("Tak Disangka ini semua hanyalah sebuah ilusi dan Covid hanyalah sebuah alat yang diciptakan untuk keperluan perang yang akan datang. Semua hanyalah ilusi belaka dan hanya mimpi, hal yang terjadi menjadi sia-sia dan tidak penting lagi. Silakan Melawan Boss Terakhir :D ");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+canvas{
+	border: 1px solid black;
+}
+
+body.opening{
+	background-image: url("../images/opening.png");
+	background-repeat: no-repeat;
+}
+
+button{
+	color: white;
+	background-color: green;
+	border-radius: 15px;
+	width: 100px;
+	height: 50px;
+}
+
+.start{
+	margin: 400px 325px 0px 0px;
+}
+
+.info{
+	border: 1px solid black;
+	position: fixed;
+	height: 600px;
+	top: 10px;
+	left: 1025px;
+}
+
+img{
+	width: 25px;
+	height: 25px;
+}
