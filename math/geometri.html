@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Barisan dan Deret Geometri</title>
+    <script type="text/javascript">
+    	function hitung(operasi){
+    		var angka1 = Number(document.getElementById('angka1').value);
+	    	var angka2 = Number(document.getElementById('angka2').value);
+	    	var angka3 = Number(document.getElementById('angka3').value);
+	    	if(angka1 == "" || angka2 == ""){
+	    		alert("Angka tidak boleh kosong");
+	    	}else if(angka3 == ""){
+	    		var res1 = document.getElementById('hasil1');
+	    		var res2 = document.getElementById('hasil2');
+		    	var hasil1 = angka1 * Math.pow(angka2, (angka3-1));
+		    	var hasil2;
+		    	if(angka2 < 1){
+		    		hasil2 = angka1/(1-angka2);
+		    	}else if(angka2 > 1){
+		    		hasil2 = angka1/(angka2-1);
+		    	}
+		    	res1.value = "Deret Tak Hingga";;
+		    	res2.value = hasil2;
+	    	}else{
+	    		var res1 = document.getElementById('hasil1');
+	    		var res2 = document.getElementById('hasil2');
+		    	var hasil1 = angka1 * Math.pow(angka2, (angka3-1));
+		    	var hasil2;
+		    	if(angka2 < 1){
+		    		hasil2 = (angka1*(1 - Math.pow(angka2, angka3)))/(1-angka2);
+		    	}else if(angka2 > 1){
+		    		hasil2 = (angka1*(Math.pow(angka2, angka3) - 1))/(angka2-1);
+		    	}
+		    	res1.value = hasil1;
+		    	res2.value = hasil2;
+	    	}
+    	}
+    </script>
+  </head>
+  <body>
+    <h1>Barisan dan Deret Geometri</h1>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <!-- <form> -->
+    	<div class="form-row">
+	    	<div class="col-md-4 mb-3">
+			    <label for="angka1">a - Suku Pertama</label>
+			    <input type="number" class="form-control" id="angka1">
+			</div>
+			<div class="col-md-4 mb-3">
+			    <label for="angka2">r - Rasio</label>
+			    <input type="number" class="form-control" id="angka2">
+			</div>
+			<div class="col-md-4 mb-3">
+			    <label for="angka3">n - Nilai n</label>
+			    <input type="number" class="form-control" id="angka3">
+			</div>
+	 	</div>
+	 	<div class="form-row">
+		  	<div class="col-md-6 mb-3">
+			 	<label for="hasil1">Un - Nilai suku ke n</label>
+			  	<input type="text" class="form-control" id="hasil1" readonly="">
+		 	</div>
+		 	<div class="col-md-6 mb-3">
+			  	<label for="hasil2">Sn - Jumlah sampai suku ke n</label>
+			  	<input type="text" class="form-control" id="hasil2" readonly="">
+		  	</div>
+	  	</div>
+	  	<button type="submit" class="btn btn-primary" onclick="hitung()">Hitung</button>
+	<!-- </form> -->
+  </body>
+</html>
