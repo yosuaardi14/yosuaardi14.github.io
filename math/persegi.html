@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Barisan dan Deret Aritmatika</title>
+    <script type="text/javascript">
+    	function setRumus(obj){
+    		var label1 = document.getElementById("val1");
+    		switch(obj.value){
+    			case "luas":
+    				label1.innerHTML = "Sisi";
+    				break;
+    			case "keliling":
+    				label1.innerHTML = "Sisi";
+    				break;
+    			case "sisi":
+    				label1.innerHTML = "Luas";
+    				break;
+    		}
+    	}
+
+
+    	function hitung(operasi){
+    		var angka1 = Number(document.getElementById('angka1').value);
+	    	var obj = document.getElementById("hitung");
+	    	if(angka1 == ""){
+	    		alert("Angka tidak boleh kosong");
+	    	}else{
+	    		var res1 = document.getElementById('hasil1');
+	    		var hasil1;
+	    		switch(obj.value){
+	    			case "luas":
+	    				hasil1 = angka1*angka1;
+	    				break;
+	    			case "keliling":
+	    				hasil1 = angka1*4;
+	    				break;
+	    			case "sisi":
+	    				hasil1 = Math.sqrt(angka1);
+	    				break;
+	    		}
+		    	res1.value = hasil1;
+	    	}
+    	}
+    </script>
+  </head>
+  <body>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <!-- <form> -->
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	  <div class="collapse navbar-collapse" id="navbarNav">
+	    <ul class="navbar-nav">
+	      <li class="nav-item">
+	        <a class="nav-link" href="index.html">Matematika <span class="sr-only">(current)</span></a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="../index.html">Home <span class="sr-only">(current)</span></a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="kalkulator.html">Kalkulator</a>
+	      </li>
+	      <li class="nav-item active">
+	        <a class="nav-link" href="aritmatika.html">Barisan Aritmatika</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="geometri.html">Barisan Geometri</a>
+	      </li>
+	    </ul>
+	  </div>
+	</nav>
+	  <h2>Persegi</h2>
+    	<div class="form-row">
+    		<div class="col-md-6 mb-3">
+	    		<label for="hitung">Hitung</label>
+			    <select class="form-control" id="hitung" onchange="setRumus(this)">
+			      <option value="luas">Luas</option>
+			      <option value="keliling">Keliling</option>
+			      <option value="sisi">Sisi</option>
+			    </select>
+		    </div>
+	    	<div class="col-md-6 mb-3">
+			    <label for="angka1" id="val1">Sisi</label>
+			    <input type="number" class="form-control" id="angka1">
+			</div>
+	 	</div>
+	 	<div class="form-row">
+		  	<div class="col-md-12 mb-3">
+			 	<label for="hasil1">Hasil</label>
+			  	<input type="number" class="form-control" id="hasil1" readonly="">
+		 	</div>
+	  	</div>
+	  	<button type="submit" class="btn btn-primary" onclick="hitung()">Hitung</button>
+	<!-- </form> -->
+  </body>
+</html>
