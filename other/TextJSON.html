@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Text</title>
+</head>
+<script type="text/javascript">
+	var dataType =["String", "int", "double", "bool", "DateTime"];
+
+	function replaceJSON(){
+		var radio = document.getElementsByName("type");
+		if (radio[0].checked) {
+			replaceDataTypetoJson();
+		}else if(radio[1].checked){
+			replaceDeocdeJson();
+		}
+	}
+
+	function replaceDataTypetoJson() {
+	    var hasil = document.getElementById("text").value;
+	    hasil=hasil.replaceAll("\/\/ ", "");
+	    for(var i in dataType){
+	      hasil = hasil.replaceAll(dataType[i]+" ", "\"");
+	    }
+	    hasil = hasil.replaceAll(";", "\":\"\",");
+	    console.log(hasil);
+	    var hasilText = document.getElementById("hasil");
+	    hasilText.value = hasil;
+	}
+
+	 function replaceDeocdeJson() {
+	    var hasil = document.getElementById("text").value;
+	    hasil=hasil.replaceAll("this.", "json[\'");
+	    hasil = hasil.replaceAll(",", "\'],");
+	    hasil = hasil.replaceAll(");", "\']);");
+	    console.log(hasil);
+	    var hasilText = document.getElementById("hasil");
+	    hasilText.value = hasil;
+	}
+</script>
+<body>
+	<textarea id="text" rows="10" cols="20">
+	</textarea>
+	<input type="radio" name="type" value="Data Type to JSON">
+	<input type="radio" name="type" value="This to JSON">
+	<input type="submit" onclick="replaceJSON()">
+	<textarea id="hasil" rows="10" cols="20" readonly>
+	</textarea>
+</body>
+</html>
