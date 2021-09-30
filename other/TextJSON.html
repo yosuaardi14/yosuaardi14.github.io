@@ -13,6 +13,8 @@
 			replaceDataTypetoJson();
 		}else if(radio[1].checked){
 			replaceDeocdeJson();
+		}else if(radio[2].checked){
+			toJson();
 		}
 	}
 
@@ -37,12 +39,32 @@
 	    var hasilText = document.getElementById("hasil");
 	    hasilText.value = hasil;
 	}
+	
+	function toJson() {
+	    var hasil = document.getElementById("text").value;
+	    hasil=hasil.replaceAll("\/\/ ", "");
+	    for(var i in dataType){
+	      hasil = hasil.replaceAll(dataType[i]+" ", "\"");
+	    }
+            var hasilSplit = hasil.split("\n");
+	    console.log(hasilSplit.length);
+
+	    for(var i in hasilSplit){
+		hasilSplit[i] = hasilSplit[i].trim();
+         	let temp = hasilSplit[i].substring(1, hasilSplit[i].indexOf(";"));
+                console.log(temp);
+		hasilSplit[i] = hasilSplit[i].replaceAll(";", "\":"+temp);
+	    }
+	    var hasilText = document.getElementById("hasil");
+	    hasilText.value = hasilSplit.toString();
+	}
 </script>
 <body>
 	<textarea id="text" rows="10" cols="20">
 	</textarea>
 	<input type="radio" name="type" value="Data Type to JSON">
 	<input type="radio" name="type" value="This to JSON">
+	<input type="radio" name="type" value="To JSON">
 	<input type="submit" onclick="replaceJSON()">
 	<textarea id="hasil" rows="10" cols="20" readonly>
 	</textarea>
