@@ -1,72 +1,114 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="utf-8">
 	<title>Text</title>
 </head>
 <script type="text/javascript">
-	var dataType =["String", "int", "double", "bool", "DateTime"];
+	var dataType = ["String", "int", "double", "bool", "DateTime"];
 
-	function replaceJSON(){
+	function replaceJSON() {
 		var radio = document.getElementsByName("type");
 		if (radio[0].checked) {
-			replaceDataTypetoJson();
-		}else if(radio[1].checked){
-			replaceDeocdeJson();
-		}else if(radio[2].checked){
-			toJson();
+			dataTypeToJsonWith();
+		} else if (radio[1].checked) {
+			dataTypeToJsonWithout();
+		} else if (radio[2].checked) {
+			dataTypeConstructor();
+		} else if (radio[3].checked) {
+			decodeJson();
 		}
 	}
 
-	function replaceDataTypetoJson() {
-	    var hasil = document.getElementById("text").value;
-	    hasil=hasil.replaceAll("\/\/ ", "");
-	    for(var i in dataType){
-	      hasil = hasil.replaceAll(dataType[i]+" ", "\"");
-	    }
-	    hasil = hasil.replaceAll(";", "\":\"\",");
-	    console.log(hasil);
-	    var hasilText = document.getElementById("hasil");
-	    hasilText.value = hasil;
+	function dataTypeToJsonWith() {
+		var hasil = document.getElementById("text").value;
+		hasil = hasil.replaceAll("\/\/ ", "");
+		for (var i in dataType) {
+			hasil = hasil.replaceAll(dataType[i] + " ", "\"");
+		}
+		var hasilSplit = hasil.split("\n");
+		console.log(hasilSplit.length);
+
+		for (var i in hasilSplit) {
+			hasilSplit[i] = hasilSplit[i].trim();
+			let temp = hasilSplit[i].substring(1, hasilSplit[i].indexOf(";"));
+			console.log(temp);
+			hasilSplit[i] = hasilSplit[i].replaceAll(";", "\":\"" + temp + "\"");
+		}
+		var hasilText = document.getElementById("hasil");
+		hasilText.value = hasilSplit.toString();
 	}
 
-	 function replaceDeocdeJson() {
-	    var hasil = document.getElementById("text").value;
-	    hasil=hasil.replaceAll("this.", "json[\'");
-	    hasil = hasil.replaceAll(",", "\'],");
-	    hasil = hasil.replaceAll(");", "\']);");
-	    console.log(hasil);
-	    var hasilText = document.getElementById("hasil");
-	    hasilText.value = hasil;
-	}
-	
-	function toJson() {
-	    var hasil = document.getElementById("text").value;
-	    hasil=hasil.replaceAll("\/\/ ", "");
-	    for(var i in dataType){
-	      hasil = hasil.replaceAll(dataType[i]+" ", "\"");
-	    }
-            var hasilSplit = hasil.split("\n");
-	    console.log(hasilSplit.length);
+	function dataTypeConstructor() {
+		var hasil = document.getElementById("text").value;
+		hasil = hasil.replaceAll("\/\/ ", "");
+		for (var i in dataType) {
+			hasil = hasil.replaceAll(dataType[i] + " ", "this.");
+		}
+		var hasilSplit = hasil.split("\n");
+		console.log(hasilSplit.length);
 
-	    for(var i in hasilSplit){
-		hasilSplit[i] = hasilSplit[i].trim();
-         	let temp = hasilSplit[i].substring(1, hasilSplit[i].indexOf(";"));
-                console.log(temp);
-		hasilSplit[i] = hasilSplit[i].replaceAll(";", "\":"+temp);
-	    }
-	    var hasilText = document.getElementById("hasil");
-	    hasilText.value = hasilSplit.toString();
+		for (var i in hasilSplit) {
+			hasilSplit[i] = hasilSplit[i].replaceAll(";", "");
+		}
+		var hasilText = document.getElementById("hasil");
+		hasilText.value = hasilSplit.toString();
+	}
+
+	function dataTypeToJsonWithout() {
+		var hasil = document.getElementById("text").value;
+		hasil = hasil.replaceAll("\/\/ ", "");
+		for (var i in dataType) {
+			hasil = hasil.replaceAll(dataType[i] + " ", "\"");
+		}
+		var hasilSplit = hasil.split("\n");
+		console.log(hasilSplit.length);
+
+		for (var i in hasilSplit) {
+			hasilSplit[i] = hasilSplit[i].trim();
+			let temp = hasilSplit[i].substring(1, hasilSplit[i].indexOf(";"));
+			console.log(temp);
+			hasilSplit[i] = hasilSplit[i].replaceAll(";", "\":" + temp);
+		}
+		var hasilText = document.getElementById("hasil");
+		hasilText.value = hasilSplit.toString();
+	}
+
+	function decodeJson() {
+		var hasil = document.getElementById("text").value;
+		hasil = hasil.replaceAll("\/\/ ", "");
+		for (var i in dataType) {
+			hasil = hasil.replaceAll(dataType[i] + " ", "json[\'");
+		}
+		var hasilSplit = hasil.split("\n");
+		console.log(hasilSplit.length);
+
+		for (var i in hasilSplit) {
+			hasilSplit[i] = hasilSplit[i].replaceAll(";", "\']");
+		}
+		var hasilText = document.getElementById("hasil");
+		hasilText.value = hasilSplit.toString();
 	}
 </script>
+
 <body>
-	<textarea id="text" rows="10" cols="20">
+	<textarea id="text" rows="20" cols="30">
 	</textarea>
-	<input type="radio" name="type" value="Data Type to JSON">
-	<input type="radio" name="type" value="This to JSON">
-	<input type="radio" name="type" value="To JSON">
+	<textarea id="hasil" rows="20" cols="30" readonly></textarea>
+	<br>
+	<input type="radio" id="data" name="type" value="Data Type to JSON">
+	<label for="data">Data Type to JSON with ""</label><br>
+	<input type="radio" id="json" name="type" value="To JSON">
+	<label for="json">Data Type to JSON without ""</label><br>
+	<input type="radio" id="this" name="type" value="Data Type Constructor">
+	<label for="this">Data Type Constructor</label><br>
+	<input type="radio" id="this" name="type" value="This to JSON">
+	<label for="this">Decode JSON</label><br>
 	<input type="submit" onclick="replaceJSON()">
-	<textarea id="hasil" rows="10" cols="20" readonly>
+	<br>
+
 	</textarea>
 </body>
+
 </html>
