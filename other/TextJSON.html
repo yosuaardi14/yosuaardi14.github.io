@@ -18,6 +18,8 @@
 			dataTypeConstructor();
 		} else if (radio[3].checked) {
 			decodeJson();
+		} else if (radio[4].checked) {
+			getterSetter();
 		}
 	}
 
@@ -90,6 +92,37 @@
 		var hasilText = document.getElementById("hasil");
 		hasilText.value = hasilSplit.toString();
 	}
+
+	function getterSetter() {
+		var hasil = document.getElementById("text").value;
+		hasil = hasil.replaceAll("\/\/ ", "");
+		var hasilSplit = hasil.split("\n");
+		var hasilText = "";
+		for (var i in hasilSplit) {
+			var tipe = "";
+			for(var j in dataType){
+				if(dataType[j] == hasil.substring(0, hasil.indexOf(" "))){
+					tipe = dataType[j];
+					break;
+				}
+			}
+			var nama = hasil.substring(hasil.indexOf("_") + 1, hasil.indexOf(";"));
+			hasilText += getter(tipe, nama);
+			hasilText += "\n";
+			hasilText += setter(tipe, nama);
+			hasilText += "\n\n";
+		}
+		var hasilDoc = document.getElementById("hasil");
+		hasilDoc.value = hasilText;
+	}
+
+	function getter(tipe, nama) {
+		return tipe + " get " + nama + "{return _" + nama + ";}";
+	}
+
+	function setter(tipe, nama) {
+		return "set " + nama + "(" + tipe + " " + nama + "){this._" + nama + "=" + nama + ";}";
+	}
 </script>
 
 <body>
@@ -102,9 +135,11 @@
 	<input type="radio" id="json" name="type" value="To JSON">
 	<label for="json">Data Type to JSON without ""</label><br>
 	<input type="radio" id="this" name="type" value="Data Type Constructor">
-	<label for="this">Data Type Constructor</label><br>
-	<input type="radio" id="this" name="type" value="This to JSON">
-	<label for="this">Decode JSON</label><br>
+	<label for="this">Data Type Constructor (Dart)</label><br>
+	<input type="radio" id="decode" name="type" value="This to JSON">
+	<label for="decode">Decode JSON</label><br>
+	<input type="radio" id="gs" name="type" value="Getter Setter">
+	<label for="gs">Generate Getter Setter (Dart private var)</label><br>
 	<input type="submit" onclick="replaceJSON()">
 	<br>
 
