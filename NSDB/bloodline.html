@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BLOODLINE</title>
+	<script type="text/javascript" src="js/bloodline.js"></script>
+	<script type="text/javascript" src="js/skill.js"></script>
+	<style type="text/css">
+		body{
+			font-family: Arial;
+		}
+	</style>
+</head>
+<body>
+	<div id="parent">
+		<a href="hair.html"><button>Hair</button></a>
+		<a href="gear.html"><button>Gear</button></a>
+		<a href="wpn.html"><button>Weapon</button></a>
+		<a href="back_item.html"><button>Back Item</button></a>
+		<a href="acsy.html"><button>Accessory</button></a>
+		<a href="skill.html"><button>Skill</button></a>
+		<a href="bloodline.html"><button>Bloodline</button></a>
+		<a href="sage.html"><button>Sage Mode</button></a>
+		<a href="pet.html"><button>Pet</button></a>
+		<a href="enemy.html"><button>Enemy</button></a>
+		<a href="gearSet.html"><button>Gear Set</button></a>
+		<hr>
+	</div>
+	<table border="1px" style="border-collapse: collapse;">
+		<!-- <th>ID<th>Name<th style="color: yellow">Gold<th style="color: blue">Token<th>Ninja Emblem<th>Status<th>Description</th> -->
+		<!-- <tr></tr> -->
+		<script type="text/javascript">
+			function writeToHTML(object){
+				document.write("<th>ID<th>Name<th style='color: yellow'>Gold<th style='color: blue'>Token<th>Ninja Emblem<th>Status<th colspan='4'>Description</th>");
+				document.write("<tr></tr>");
+				document.write("<td>");
+				var id = object["id"].replace("bloodline", "");
+				document.write(id);
+				document.write("<td>");
+				document.write(object["name"]);
+				document.write("<td>");
+				document.write(object["gold"]);
+				document.write("<td>");
+				document.write(object["token"]);
+				document.write("<td>");
+				document.write(object["premium"]);
+				document.write("<td>");
+				document.write(object["development"] == 0? "Released" : "Unreleased");
+				document.write("<td colspan='4'>");
+				document.write(object["description"]);
+				document.write("</td>");
+				document.write("<tr></tr>");
+				document.write("<th>Skill ID<th>Skill Name<th>Type<th>Status<th>Level<th style='color: red'>Damage<th style='color: blue'>Chakra<th>Cooldown<th>Description<th>Tooltip</th>");
+				document.write("<tr></tr>");
+				var countSkill = 0;
+				var maxSkill = object["type"] == 0 ? 6 : 3;
+				for(let i = 1000; i <= 1056; i++){
+					if(i == 1039 || i == 1040){
+						continue;
+					}
+					if(countSkill == maxSkill){
+						break;
+					}
+					if(BLOODLINE_SKILL["bloodline_skill"+i]["bloodline_id"] == id){
+						writeBloodlineToHTML(BLOODLINE_SKILL["bloodline_skill"+i]);
+						countSkill++;
+					}
+				}
+			}
+
+			function writeBloodlineToHTML(object){
+				var max = object["effect"].length;
+				var rowspan = max == 10 ? max : 1;
+				document.write("<td rowspan='"+rowspan*2+"'>");
+				var id = object["skill_id"].replace("skill", "");
+				
+				document.write(id);
+				//var source = "icon/skill/"+id+".bmp";
+				//var source2 = "icon/skill/"+id+".png"; 
+				//document.write("<td>");
+				//document.write("<img src=\""+source+"\" onerror=\"this.src='"+source2+"'\" alt=\"None\"width=\"50px\" height =\"50px\">");
+				document.write("<td rowspan='"+rowspan*2+"'>");
+				document.write(object["name"]);
+				document.write("<td rowspan='"+rowspan*2+"'>");
+				document.write(object["type"]);
+				document.write("<td rowspan='"+rowspan*2+"'>");
+				document.write(object["development"] == 0? "Released" : "Unreleased");
+				
+				if(max > 0){
+					for(let i = 0; i < max; i++){
+						document.write("<td>");
+						document.write(object["effect"][i]["skill_level"]);
+						document.write("<td style='color: red'>");
+						document.write(object["effect"][i]["skill_damage"]);
+						document.write("<td style='color: blue'>");
+						document.write(object["effect"][i]["skill_cp"]);
+						document.write("<td>");
+						document.write(object["cooldown"]);
+						document.write("<td>");
+						document.write(object["description"]);
+						document.write("<td>");
+						if(id >= 1000 && id <= 1060 || id >= 3000 && id <= 3999){
+							var max = object["effect"].length;
+							var temp = String(object["tooltip"]);
+							if(max > 0){
+								var temp = temp.replace("[valCHANCETOEFFECT_1]", object["effect"][i]["effect_chancetoeffect_1"]);
+								temp = temp.replace("[valCHANCETOEFFECT_2]", object["effect"][i]["effect_chancetoeffect_2"]);
+								temp = temp.replace("[valCHANCETOEFFECT_3]", object["effect"][i]["effect_chancetoeffect_3"]);
+
+								temp = temp.replace("[valCHANCETOHIT_1]", object["effect"][i]["effect_chancetohit_1"]);
+								temp = temp.replace("[valCHANCETOHIT_2]", object["effect"][i]["effect_chancetohit_2"]);
+								temp = temp.replace("[valCHANCETOHIT_3]", object["effect"][i]["effect_chancetohit_3"]);
+
+								temp = temp.replace("[valAMOUNT_1]", Math.abs(object["effect"][i]["effect_amount_1"]));
+								temp = temp.replace("[valAMOUNT_2]", Math.abs(object["effect"][i]["effect_amount_2"]));
+								temp = temp.replace("[valAMOUNT_3]", Math.abs(object["effect"][i]["effect_amount_3"]));
+								temp = temp.replace("[valAMOUNT_3]", Math.abs(object["effect"][i]["effect_amount_3"]));
+
+								temp = temp.replace("[val100minusAMOUNT_1]", 100-object["effect"][i]["effect_amount_1"]);
+								temp = temp.replace("[val100minusAMOUNT_2]", 100-object["effect"][i]["effect_amount_2"]);
+								temp = temp.replace("[val100minusAMOUNT_3]", 100-object["effect"][i]["effect_amount_3"]);
+
+								temp = temp.replace("[val100plusAMOUNT_1]", 100+object["effect"][i]["effect_amount_1"]);
+								temp = temp.replace("[val100plusAMOUNT_2]", 100+object["effect"][i]["effect_amount_2"]);
+								temp = temp.replace("[val100plusAMOUNT_3]", 100+object["effect"][i]["effect_amount_3"]);
+
+								temp = temp.replace("[valTURN_1]", object["effect"][i]["duration_1"]-1);
+								temp = temp.replace("[valTURN_2]", object["effect"][i]["duration_2"]-1);
+								temp = temp.replace("[valTURN_3]", object["effect"][i]["duration_3"]-1);
+								
+								temp = temp.replace("[valDAMAGE]", object["effect"][i]["skill_damage"]);
+								temp = temp.replace("[valLEVEL]", object["effect"][i]["skill_level"]);
+								
+								temp = temp.replace("[valreqAMOUNT_1]", object["effect"][i]["effect_requirement_1"].split("|")[3]);
+								temp = temp.replace("[valreqAMOUNT_2]", object["effect"][i]["effect_requirement_2"].split("|")[3]);
+								temp = temp.replace("[valreqAMOUNT_3]", object["effect"][i]["effect_requirement_3"].split("|")[3]);
+							}
+							document.write(temp);
+						}else{
+							document.write(object["tooltip"]);
+						}
+						document.write("</td>");
+						document.write("<tr></tr>");
+					}
+				}else{
+					document.write("<td>");
+					document.write(0);
+					document.write("<td style='color: red'>");
+					document.write(0);
+					document.write("<td style='color: blue'>");
+					document.write(0);
+					document.write("<td>");
+					document.write(object["cooldown"]);
+					document.write("<td>");
+					document.write(object["description"]);
+					document.write("<td>");
+					document.write(object["tooltip"]);
+				}
+				document.write("</td>");
+				document.write("<tr></tr>");
+			}
+
+			for (var i = 1; i <= 12; i++) {
+				if (BLOODLINE["bloodline"+i] != null) {	
+					writeToHTML(BLOODLINE["bloodline"+i]);
+				}
+			}
+		</script>
+	</table>
+</body>
+</html>
+

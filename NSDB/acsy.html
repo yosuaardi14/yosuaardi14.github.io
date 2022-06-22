@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ACCESSORY</title>
+	<script type="text/javascript" src="js/acsy.js"></script>
+	<script type="text/javascript" src="js/gearSet.js"></script>
+	<script type="text/javascript" src="js/enemy.js"></script>
+	<style type="text/css">
+		body{
+			font-family: Arial;
+		}
+	</style>
+</head>
+<body>
+	<div id="parent">
+		<a href="hair.html"><button>Hair</button></a>
+		<a href="gear.html"><button>Gear</button></a>
+		<a href="wpn.html"><button>Weapon</button></a>
+		<a href="back_item.html"><button>Back Item</button></a>
+		<a href="acsy.html"><button>Accessory</button></a>
+		<a href="skill.html"><button>Skill</button></a>
+		<a href="bloodline.html"><button>Bloodline</button></a>
+		<a href="sage.html"><button>Sage Mode</button></a>
+		<a href="pet.html"><button>Pet</button></a>
+		<a href="enemy.html"><button>Enemy</button></a>
+		<a href="gearSet.html"><button>Gear Set</button></a>
+		<hr>
+	</div>
+	<table border="1px" style="border-collapse: collapse;">
+		<th>ID<th>Name<th>Level<th>Status<th>Description</th>
+		<tr></tr>
+		<script type="text/javascript">
+			function writeToHTML(object){
+				document.write("<td>");
+				var id = object["id"].replace("acsy", "");
+				document.write(id);
+				document.write("<td>");
+				document.write(object["name"]);
+				document.write("<td>");
+				document.write(object["level"]);
+				document.write("<td>");
+				document.write(object["development"] == 0? "Released" : "Unreleased");
+				document.write("<td>");
+				document.write(object["description"]);
+				if(object["extra_effect"] != null){
+					document.write("<br><br>");
+					document.write("<b>Extra Effect:</b><br>");
+					var extra = EXTRA_EFFECT_TEXT[object["extra_effect"]["type"]];
+					//document.write(object["extra_effect"]["event_name"]+"<br><br>");
+					var enemy = "";
+					for(let i = 0; i < object["extra_effect"]["enemy"].length; i++){
+							var temp = ENEMY[object["extra_effect"]["enemy"][i]]["name"];
+							enemy += temp;
+						if(i < object["extra_effect"]["enemy"].length-1){
+							enemy +="/";
+						}else{
+							enemy +=" ";
+						}
+					}
+					extra = extra.replace("[enemy]", enemy);
+					extra = extra.replace("[amount]", object["extra_effect"]["amount"]);
+					extra = extra.replace("[duration]", object["extra_effect"]["duration"]);
+					extra = extra.replace("[chance]", object["extra_effect"]["chance"]);
+					document.write(extra);
+				}
+				document.write("</td>");
+				document.write("<tr></tr>");
+			}
+			for (var i = 1; i <= 109; i++) {
+				if (ACCESSORY["acsy"+i] != null) {	
+					writeToHTML(ACCESSORY["acsy"+i]);
+				}
+			}
+		</script>
+	</table>
+</body>
+</html>
+

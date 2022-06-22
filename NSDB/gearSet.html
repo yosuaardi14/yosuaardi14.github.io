@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>GEAR SET</title>
+	<script type="text/javascript" src="js/gearSet.js"></script>
+	<script type="text/javascript" src="js/wpn.js"></script>
+	<script type="text/javascript" src="js/back_item.js"></script>
+	<script type="text/javascript" src="js/acsy.js"></script>
+	<script type="text/javascript" src="js/gear.js"></script>
+	<script type="text/javascript" src="js/hair.js"></script>
+	<style type="text/css">
+		body{
+			font-family: Arial;
+		}
+	</style>
+</head>
+<body>
+	<div id="parent">
+		<a href="hair.html"><button>Hair</button></a>
+		<a href="gear.html"><button>Gear</button></a>
+		<a href="wpn.html"><button>Weapon</button></a>
+		<a href="back_item.html"><button>Back Item</button></a>
+		<a href="acsy.html"><button>Accessory</button></a>
+		<a href="skill.html"><button>Skill</button></a>
+		<a href="bloodline.html"><button>Bloodline</button></a>
+		<a href="sage.html"><button>Sage Mode</button></a>
+		<a href="pet.html"><button>Pet</button></a>
+		<a href="enemy.html"><button>Enemy</button></a>
+		<a href="gearSet.html"><button>Gear Set</button></a>
+		<hr>
+	</div>
+	<table border="1px" style="border-collapse: collapse;">
+		<th>ID<th>Name<th>Effect<th colspan="8">Member List</th>
+		<tr></tr>
+		<script type="text/javascript">
+			function writeToHTML(object){
+				document.write("<td>");
+				var id = object["id"].replace("gearset", "");
+				document.write(id);
+				document.write("<td>");
+				document.write(object["name"]);
+				//effect
+				document.write("<td>");
+				for(let i = 0; i < object["effect"].length; i++){
+					var temp = GEAR_SET_TEXT[object["effect"][i]["type"]];
+					temp = temp.replace("[amount]", object["effect"][i]["amount"]);
+					temp = temp.replace("[duration]", object["effect"][i]["duration"]);
+					temp = temp.replace("[chance]", object["effect"][i]["chance"]);
+					document.write(temp);
+					document.write("<br>");
+				}
+				//member list
+				document.write("<td>");
+				var hair = 0;
+				var set = 0;
+				for(let i = 0; i < object["member_list"].length; i++){
+					if(object["member_list"][i].includes("acsy", 0)){
+						var temp = ACCESSORY[object["member_list"][i]]["name"];
+						document.write(temp+"<br>");
+					}
+					if(object["member_list"][i].includes("back", 0)){
+						var temp = BACK_ITEM[object["member_list"][i]]["name"];
+						document.write(temp+"<br>");
+					}
+					if(object["member_list"][i].includes("wpn", 0)){
+						var temp = WEAPON[object["member_list"][i]]["name"];
+						document.write(temp+"<br>");
+					}
+					if(set == 0){
+						if(object["member_list"][i].includes("set", 0)){
+							var temp = "";
+							if(BODY_SET_BOY[object["member_list"][i]] != null){
+								temp = BODY_SET_BOY[object["member_list"][i]]["name"];
+							}else{
+								temp = BODY_SET_GIRL[object["member_list"][i]]["name"];
+							}
+							document.write(temp+"<br>");
+							set++;
+						}
+					}
+					if(hair == 0){
+						if(object["member_list"][i].includes("hair", 0)){
+							var temp = HAIR[object["member_list"][i]]["name"];
+							document.write(temp+"<br>");
+							hair++;
+						}
+					}
+				}
+				document.write("</td>");
+				document.write("<tr></tr>");
+			}
+			for (var i = 1; i <= 87; i++) {
+				if (GEAR_SET["gearset"+i] != null) {	
+					writeToHTML(GEAR_SET["gearset"+i]);
+				}
+			}
+		</script>
+	</table>
+</body>
+</html>
+

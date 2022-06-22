@@ -1,0 +1,147 @@
+const BLOODLINE = {
+         "bloodline1":{
+            "id":"bloodline1",
+            "name":"Eye of Mirror",
+            "description":"An ancient eye skill that grants user with strong vision and perception, but it also brings huge physical burden.",
+            "type":0,
+            "premium":true,
+            "vendor":true,
+            "token":400,
+            "gold":0,
+            "development":0,
+            "hash":"c5bc030a53622a08e5532f8479dd9a1ea3fe56ac"
+         },
+         "bloodline2":{
+            "id":"bloodline2",
+            "name":"Eight Extremities",
+            "description":"This talent focuses on the flexibility of 8 body parts, and the art of taijutsu.<br>Explosive power can be achived under extreme mode but there will be serious side effects.",
+            "type":0,
+            "premium":false,
+            "vendor":true,
+            "token":400,
+            "gold":0,
+            "development":0,
+            "hash":"9c759848a9ba365c495276efab1f189286ca26ed"
+         },
+         "bloodline3":{
+            "id":"bloodline3",
+            "name":"Dark Eye",
+            "description":"Combine eye skill with acupuncture skill to give user with ability to look through target\'s nerves and meridians.",
+            "type":0,
+            "premium":false,
+            "vendor":true,
+            "token":0,
+            "gold":500000,
+            "development":0,
+            "hash":"2efbb80bd3cf383191f317fa86cc8facfeb2417b"
+         },
+         "bloodline4":{
+            "id":"bloodline4",
+            "name":"Deadly Performance",
+            "description":"Dead Bone performer can summon deceased beings in battles.<br>Advanced performer can manipulate more dead bones at the same time.",
+            "type":0,
+            "premium":false,
+            "vendor":true,
+            "token":0,
+            "gold":500000,
+            "development":0,
+            "hash":"8910d0d38df40a5305d1b9355e6baf22b5ea6e35"
+         },
+         "bloodline5":{
+            "id":"bloodline5",
+            "name":"Demon Sound",
+            "description":"The Demon Sound is combined by the elements of Thunder and Wind.<br>User interferes target with different kinds of sounds and music.",
+            "type":1,
+            "premium":false,
+            "vendor":true,
+            "token":0,
+            "gold":1000000,
+            "development":0,
+            "hash":"3ea6c414eb4a5fc95bad860cb316112c6788547a"
+         },
+         "bloodline6":{
+            "id":"bloodline6",
+            "name":"Explosive Lava",
+            "description":"Explosive Lava is combined by the elements of Fire and Earth. User damage target by ignition and explosion.",
+            "type":1,
+            "premium":false,
+            "vendor":true,
+            "token":0,
+            "gold":1000000,
+            "development":0,
+            "hash":"1b03fd3224443438b13947642a2fe1c3fca99af8"
+         },
+         "bloodline7":{
+            "id":"bloodline7",
+            "name":"Hidden Silhouette",
+            "description":"Silhouette user manipulates human shadows to restrict and control target.<br>Advanced user can incarnate shadows into physical objects and attack target directly.",
+            "type":1,
+            "premium":true,
+            "vendor":true,
+            "token":400,
+            "gold":0,
+            "development":0,
+            "hash":"622f44bbaa2c43a22a9c0a941839cbf20addafa5"
+         },
+         "bloodline8":{
+            "id":"bloodline8",
+            "name":"Enraged Forest",
+            "description":"The Enraged Forest is combined by the elements of Water and Earth. User manipulates the growth of tree and uses wood to attack target.",
+            "type":1,
+            "premium":false,
+            "vendor":true,
+            "token":0,
+            "gold":1000000,
+            "development":0,
+            "hash":"a79bce5f9000586c862c055f2e7e4099fc2894e6"
+         },
+         "bloodline9":{
+            "id":"bloodline9",
+            "name":"Icy Crystal",
+            "description":"Combine Wind and Water elements together to form a new element type - Icy Crystal. Use low temperature to attack target or protect yourself.",
+            "type":1,
+            "premium":false,
+            "vendor":true,
+            "token":0,
+            "gold":1000000,
+            "development":0,
+            "hash":"d882fe9d9636b6d441a7ecc18b68dd33ac89fd58"
+         },
+         "bloodline10":{
+            "id":"bloodline10",
+            "name":"Saint Power",
+            "description":"'Saint Power' allows the user to achieve the pinnacle of chakra manipulation by understanding the fundamental essence of life.",
+            "type":0,
+            "premium":false,
+            "vendor":false,
+            "token":2500,
+            "gold":0,
+            "development":0,
+            "hash":"35428cf55d8de04862912b57ef6868a03de7a67b"
+         },
+         "bloodline11":{
+            "id":"bloodline11",
+            "name":"Insect Symbiosis",
+            "description":"Years of studying various insects and learning their biology has unraveled the secrets of insect utilization and manipulation.",
+            "type":0,
+            "premium":false,
+            "vendor":false,
+            "token":0,
+            "gold":3000000,
+            "development":0,
+            "hash":"a43dc682813d8316544ed913611e248654aee35a"
+         },
+         "bloodline12":{
+            "id":"bloodline12",
+            "name":"???",
+            "description":"???",
+            "type":0,
+            "premium":false,
+            "vendor":false,
+            "token":100,
+            "gold":100,
+            "development":1,
+            "hash":"3e88744f45cc1ee740c0ec143e9f8f90373ded64"
+         }
+      };
+      
